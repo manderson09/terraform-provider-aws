@@ -226,3 +226,28 @@ func ServiceActionStatus(conn *servicecatalog.ServiceCatalog, acceptLanguage, id
 		return output.ServiceActionDetail, servicecatalog.StatusAvailable, nil
 	}
 }
+
+func ProvisioningArtifactStatus(conn *servicecatalog.ServiceCatalog, id, productID string) resource.StateRefreshFunc {
+	return func() (interface{}, string, error) {
+		input := &servicecatalog.DescribeProvisioningArtifactInput{
+			ProvisioningArtifactId: aws.String(id),
+			ProductId:              aws.String(productID),
+		}
+
+		output, err := conn.DescribeProvisioningArtifact(input)
+
+		if tfawserr.ErrCodeEquals(err, servicecatalog.ErrCodeResourceNotFoundException) {
+			return nil, StatusNotFound, err
+		}
+
+		if err != nil {
+			return nil, servicecatalog.StatusFailed, fmt.Errorf("error describing Service Catalog Provisioning Artifact (%s): %w", id, err)
+		}
+
+		if output == nil || output.ProvisioningArtifactDetail == nil {
+			return nil, StatusUnavailable, fmt.Errorf("error describing Service Catalog Provisioning Artifact (%s): empty response", id)
+		}
+
+		return output, aws.StringValue(output.Status), err
+	}
+}
