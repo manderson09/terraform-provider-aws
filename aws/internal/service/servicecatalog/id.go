@@ -32,3 +32,15 @@ func ProductPortfolioAssociationParseID(id string) (string, string, string, erro
 func ProductPortfolioAssociationCreateID(acceptLanguage, portfolioID, productID string) string {
 	return strings.Join([]string{acceptLanguage, portfolioID, productID}, ":")
 }
+
+func ProvisioningArtifactID(artifactID, productID string) string {
+	return strings.Join([]string{artifactID, productID}, ":")
+}
+
+func ProvisioningArtifactParseID(id string) (string, string, error) {
+	parts := strings.Split(id, ":")
+	if len(parts) != 2 {
+		return "", "", fmt.Errorf("Please make sure the ID is in the form artifact_id:product_id (i.e. pa-r2d2slrtcob:prod-c3pohcrhmisy")
+	}
+	return parts[0], parts[1], nil
+}
