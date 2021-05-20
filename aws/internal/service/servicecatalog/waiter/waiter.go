@@ -1,7 +1,6 @@
 package waiter
 
 import (
-	"fmt"
 	"time"
 
 	"github.com/aws/aws-sdk-go/aws"
@@ -337,7 +336,7 @@ func ProvisioningArtifactDeleted(conn *servicecatalog.ServiceCatalog, id, produc
 	}
 
 	if err != nil {
-		return fmt.Errorf("error waiting for state of provisioning artifact (%s): %w", id, err)
+		return err
 	}
 
 	return nil
