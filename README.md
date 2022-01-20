@@ -1,4 +1,6 @@
 <a href="https://terraform.io">
+
+[![IaC](https://app.soluble.cloud/api/v1/public/badges/7cf315ad-69d6-4430-af78-789af6726818.svg?orgId=646349530171)](https://app.soluble.cloud/repos/details/github.com/manderson09/terraform-provider-aws?orgId=646349530171)  [![CIS](https://app.soluble.cloud/api/v1/public/badges/a3241ba5-2ecc-4382-a872-4cf3231d1e1d.svg?orgId=646349530171)](https://app.soluble.cloud/repos/details/github.com/manderson09/terraform-provider-aws?orgId=646349530171)  [![HIPAA](https://app.soluble.cloud/api/v1/public/badges/1ca91f8b-c846-456d-9534-d8d3fb6db361.svg?orgId=646349530171)](https://app.soluble.cloud/repos/details/github.com/manderson09/terraform-provider-aws?orgId=646349530171)  
     <img src="https://cdn.rawgit.com/hashicorp/terraform-website/master/content/source/assets/images/logo-hashicorp.svg" alt="Terraform logo" title="Terraform" align="right" height="50" />
 </a>
 
